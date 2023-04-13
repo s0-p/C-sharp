@@ -4,30 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-struct Monster
-{
-    public int hp;
-    public int mp;
-}
-class Hero
-{
-    public int hp;
-    public int mp;
-}
 namespace C_sharp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Monster monster;    //value type
-            monster.hp = 100;
-            monster.mp = 200;
-
-            Hero hero = new Hero(); // 생성자로 Hero 크기만큼 heap 메모리 할당 -> reference type
-            // hero <- 객체, instance화하다(instansiate)
-            hero.hp = 400;
-            hero.mp = 100;
+            int num = 10;
+            Object o = num; //boxing
+            o = 1234;   //garbage collector 발생 -> 일정량 쌓이면 자동 정리
+            num = (int)o; //unboxing, casting 필수
+            Console.WriteLine("Object o의 값: {0} int a의 값: {1}", o, num);
+            
+            //Object형을 사용하지 않는것이 바람직,,
         }
     }
 }
