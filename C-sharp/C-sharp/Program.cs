@@ -10,17 +10,13 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            string str = "hello";
-            char[] chArr = new char[] { 'w', 'o', 'r', 'l', 'd' };
-            string str2 = new string(chArr);
-            string str3 = new string(chArr, 2, 3);  // "rld"
-            string str4 = new string('w', 4);   //"wwww"
-            Console.WriteLine(str);
-            Console.WriteLine(str2);
-            Console.WriteLine(str3);
-            Console.WriteLine(str4);
-            Console.WriteLine(str + str2);
-
+            char[] chArr = new char[] { 'h', 'e', 'l', 'l', 'o' };
+            string str1 = new string(chArr);
+            string str2 = "hello";
+            string str3 = "world";
+            Console.WriteLine(str1 == str2);    //True <- 주소를 갖고있지만 값 비교로 간주
+            Console.WriteLine(string.ReferenceEquals(str1, str2));  //False
+            Console.WriteLine(str1.CompareTo(str3));    //-1 <- str1 > str3
         }
     }
 }
