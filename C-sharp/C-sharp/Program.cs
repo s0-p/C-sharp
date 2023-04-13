@@ -10,28 +10,17 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            object obj1 = 20;   //reference type이므로
-            object obj2 = 20;   //주소를 참조하고 있어 다름
-            int num1 = 10;
-            int num2 = 10;
+            string str = "hello";
+            char[] chArr = new char[] { 'w', 'o', 'r', 'l', 'd' };
+            string str2 = new string(chArr);
+            string str3 = new string(chArr, 2, 3);  // "rld"
+            string str4 = new string('w', 4);   //"wwww"
+            Console.WriteLine(str);
+            Console.WriteLine(str2);
+            Console.WriteLine(str3);
+            Console.WriteLine(str4);
+            Console.WriteLine(str + str2);
 
-            if (obj1 == obj2)
-            {
-                Console.WriteLine("object obj1과 obj2는 같습니다.");
-            }
-            else
-            {
-                Console.WriteLine("object obj1과 obj2는 같지 않습니다.");
-            }
-
-            if (num1 == num2)
-            {
-                Console.WriteLine("object num1과 num2는 같습니다.");
-            }
-            else
-            {
-                Console.WriteLine("object num1과 num2는 같지 않습니다.");
-            }
         }
     }
 }
