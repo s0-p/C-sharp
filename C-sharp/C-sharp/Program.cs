@@ -10,12 +10,24 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            int num;
-            string strnum = "456";
-            num = int.Parse(strnum);
-            Console.WriteLine("변환한 숫자: {0}", num);
-            num = int.Parse(Console.ReadLine());
-            Console.WriteLine("입력한 숫자: {0}", num);
+            int num = 0;
+            bool isTry = false;
+            do
+            {
+                isTry = false;
+                try
+                {
+                    num = int.Parse(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    isTry = true;
+                }
+            } while (isTry);
+
+            
+            Console.WriteLine(num);
         }
     }
 }
