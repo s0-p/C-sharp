@@ -9,15 +9,8 @@ class Hero
     private const int MAX_HP = 500;
     private int hp = 0;
     //property
-    public int HP {   get {   return hp;  }   set { hp = value; } }
-    //public int GetHP()
-    //{
-    //    return hp;
-    //}
-    //public void SetHP(int hp)
-    //{
-    //    this.hp = hp;
-    //}
+    public int HP { get { return hp; } }
+    
 public Hero()
     {
         hp = MAX_HP;
@@ -25,6 +18,17 @@ public Hero()
     public void LevelUp()
     {
         hp = MAX_HP;
+    }
+    public void Damage(int dmg)
+    {
+        if (hp - dmg > 0)
+        {
+            hp -= dmg;
+        }
+        else
+        {
+            hp = 0;
+        }
     }
 }
 
@@ -37,7 +41,7 @@ namespace C_sharp
             Hero myhero = new Hero();
             if (myhero.HP - 300 > 0)
             {
-                myhero.HP = myhero.HP - 300;
+                myhero.Damage(300);
             }
             Console.WriteLine("현재 HP: " + myhero.HP);
         }
