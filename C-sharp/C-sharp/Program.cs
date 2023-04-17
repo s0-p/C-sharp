@@ -4,42 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Hero
+class Student
 {
-    private const int MAX_HP = 500;
-    private int hp = 0;
-    //property
-    public int HP { get { return hp; } }
-    public Hero()
+    public string m_name;
+    public static string m_schoolName;
+    public string NAME { get { return m_name; } set { m_name = value; } }
+    public void Intro()
     {
-        hp = MAX_HP;
-    }
-    public void LevelUp()
-    {
-        hp = MAX_HP;
-    }
-    public void Damage(int dmg)
-    {
-        if (hp - dmg > 0)
-        {
-            hp -= dmg;
-        }
-        else
-        {
-            hp = 0;
-        }
+        Console.WriteLine("{0}에 다니는 {1}입니다.", m_schoolName, m_name);
     }
 }
-
 namespace C_sharp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Hero myhero = new Hero();
-            myhero.Damage(120);
-            Console.WriteLine("현재 HP: " + myhero.HP);
+            Student.m_schoolName = "서울대학교";
+            Student std1 = new Student();
+            Student std2 = new Student();
+            std1.m_name = "홍길동";
+            std1.m_name = "아무개";
+            std1.Intro();
+            std2.Intro();
         }
     }
 }
