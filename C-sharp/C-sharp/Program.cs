@@ -10,19 +10,18 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            int i = 0;
-            int[] arr = new int[5] { 10, 20, 30, 40, 50 };
+            string[] arr = new string[] { "hello", "sbs", "game", "academy" };
 
-            foreach (int n in arr)
+            for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine("arr[{0}] : {1}", i, n);
-                i++;
+                Console.WriteLine(arr[i]);
             }
             Console.WriteLine();
-            for (int n = 0; n < arr.Length; n++)
+            foreach (string s in arr)
             {
-                Console.WriteLine("arr[{0}] : {1}", n, arr[n]);
+                Console.WriteLine(s);
             }
+
         }
     }
 }
