@@ -4,24 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+class Point
+{
+    private int x;
+    private int y;
+    public Point(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+    public void Print()
+    {
+        System.Console.WriteLine("({0}, {1})", x, y);
+    }
+}
 namespace C_sharp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string[] arr = new string[] { "hello", "sbs", "game", "academy" };
+            Point[] arr = new Point[] { new Point(1, 1), new Point(2, 2), new Point(3, 3) };
 
-            for (int i = 0; i < arr.Length; i++)
+            foreach (Point pt in arr)
             {
-                Console.WriteLine(arr[i]);
+                pt.Print();
             }
-            Console.WriteLine();
-            foreach (string s in arr)
-            {
-                Console.WriteLine(s);
-            }
-
         }
     }
 }
