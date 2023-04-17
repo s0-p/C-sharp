@@ -8,15 +8,17 @@ class Hero
 {
     private const int MAX_HP = 500;
     private int hp = 0;
-    public int GetHP()
-    {
-        return hp;
-    }
-    public void SetHP(int hp)
-    {
-        this.hp = hp;
-    }
-    public Hero()
+    //property
+    public int HP {   get {   return hp;  }   set { hp = value; } }
+    //public int GetHP()
+    //{
+    //    return hp;
+    //}
+    //public void SetHP(int hp)
+    //{
+    //    this.hp = hp;
+    //}
+public Hero()
     {
         hp = MAX_HP;
     }
@@ -33,11 +35,11 @@ namespace C_sharp
         static void Main(string[] args)
         {
             Hero myhero = new Hero();
-            if (myhero.GetHP() - 300 > 0)
+            if (myhero.HP - 300 > 0)
             {
-                myhero.SetHP(myhero.GetHP() - 300);
+                myhero.HP = myhero.HP - 300;
             }
-            Console.WriteLine("현재 HP: " + myhero.GetHP());
+            Console.WriteLine("현재 HP: " + myhero.HP);
         }
     }
 }
