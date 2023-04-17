@@ -4,28 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A
+class Hero
 {
-    class Point
+    private const int MAX_HP = 500;
+    private int hp = 0;
+    public int GetHP()
     {
-        private int x, y;
-        public Point(int _x, int _y)
-        {
-            x = _x;
-            y = _y;
-        }
+        return hp;
     }
-}
-namespace B
-{
-    class Point
+    public void SetHP(int hp)
     {
-        private int x, y;
-        public Point(int _x, int _y)
-        {
-            x = _x;
-            y = _y;
-        }
+        this.hp = hp;
+    }
+    public Hero()
+    {
+        hp = MAX_HP;
+    }
+    public void LevelUp()
+    {
+        hp = MAX_HP;
     }
 }
 
@@ -35,8 +32,12 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            A.Point point1 = new A.Point(2, 3);
-            B.Point point2 = new B.Point(4, 5);
+            Hero myhero = new Hero();
+            if (myhero.GetHP() - 300 > 0)
+            {
+                myhero.SetHP(myhero.GetHP() - 300);
+            }
+            Console.WriteLine("현재 HP: " + myhero.GetHP());
         }
     }
 }
