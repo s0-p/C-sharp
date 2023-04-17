@@ -10,8 +10,7 @@ class Hero
     private int hp = 0;
     //property
     public int HP { get { return hp; } }
-    
-public Hero()
+    public Hero()
     {
         hp = MAX_HP;
     }
