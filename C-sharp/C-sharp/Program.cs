@@ -38,10 +38,7 @@ namespace C_sharp
         static void Main(string[] args)
         {
             Hero myhero = new Hero();
-            if (myhero.HP - 300 > 0)
-            {
-                myhero.Damage(300);
-            }
+            myhero.Damage(120);
             Console.WriteLine("현재 HP: " + myhero.HP);
         }
     }
