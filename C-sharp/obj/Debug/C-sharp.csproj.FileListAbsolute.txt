@@ -1,0 +1,7 @@
+D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\bin\Debug\C-sharp.exe.config
+D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\bin\Debug\C-sharp.exe
+D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\bin\Debug\C-sharp.pdb
+D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.csproj.AssemblyReference.cache
+D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.csproj.CoreCompileInputs.cache
+D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.exe
+D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.pdb
