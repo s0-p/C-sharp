@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 class DayCollection
 {
+    #region Constants and Fields
     private string[] days = { "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat" };
+    #endregion
+    #region Public Properties
     private int GetDay(string testDay)
     {
         for (int i = 0; i < days.Length; i++)
@@ -25,6 +28,7 @@ class DayCollection
             return GetDay(day);
         }
     }
+    #endregion
 }
 namespace C_sharp
 {
