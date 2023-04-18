@@ -4,16 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class TempConverter
+class TempRecord
 {
-    public static float CtoF(string tempC)
+    private float[] temps = new float[10] {56.1F, 56.2F, 56.3F, 56.4F, 56.5F,
+                                    56.6F, 56.7F, 56.8F, 56.9F, 57F};
+    public int Length { get { return temps.Length; } }
+    public float this[int index]
     {
-        return float.Parse(tempC) * 9 / 5 + 32;
+        get 
+        {
+            return temps[index];
+        }
+
+        set 
+        {
+            temps[index] = value;
+        }
     }
-    public static float FtoC(string tempF)
-    {
-        return (float.Parse(tempF) - 32) * 5 / 9;
-    }
+
+
 }
 
 namespace C_sharp
@@ -22,28 +31,13 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("온도를 어떻게 바꿀지 선택하십시오.");
-            Console.WriteLine("1. 섭씨 -> 화씨");
-            Console.WriteLine("2. 화씨 -> 섭씨");
-            string select = Console.ReadLine();
-            string temp;
-
-            switch (select)
+            TempRecord tempRecord = new TempRecord();
+            tempRecord[3] = 58.3F;
+            tempRecord[5] = 60.1F;
+            for (int i = 0; i < tempRecord.Length; i++)
             {
-                case "1":
-                    Console.Write("섭씨온도를 입력해주세요 : ");
-                    temp = Console.ReadLine();
-                    Console.WriteLine("{0}℃ -> {1}℉", temp, TempConverter.CtoF(temp));
-                    break;
-                case "2":
-                    Console.Write("화씨온도를 입력해주세요 : ");
-                    temp = Console.ReadLine();
-                    Console.WriteLine("{0}℉ -> {1}℃", temp, TempConverter.CtoF(temp));
-                    break;
-                default:
-                    break;
+                Console.WriteLine("tempRecord[{0}] = {1}", i, tempRecord[i]);
             }
-
         }
     }
 }
