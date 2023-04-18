@@ -4,31 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Point
-{
-    private int x;
-    private int y;
-    public Point(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-    public void Print()
-    {
-        System.Console.WriteLine("({0}, {1})", x, y);
-    }
-}
 namespace C_sharp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Point[] arr = new Point[] { new Point(1, 1), new Point(2, 2), new Point(3, 3) };
-
-            foreach (Point pt in arr)
+            Console.WriteLine("어느 것으로 바꾸시겠습니까?");
+            Console.WriteLine("1.℃ -> ℉");
+            Console.WriteLine("2.℉ -> ℃");
+            string select = Console.ReadLine();
+            int C, F;
+            switch (select)
             {
-                pt.Print();
+                case "1":
+                    Console.Write("℃를 입력해주세요: ");
+                    C = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("{0} ℃ -> {1} ℉", C, C * 9 / 5 + 32);
+                    break;
+                case "2":
+                    Console.Write("℉를 입력해주세요: ");
+                    F = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("{0} ℉ -> {1} ℃", F, (F - 32) * 5 / 9);
+                    break;
+                default:
+                    break;
             }
         }
     }
