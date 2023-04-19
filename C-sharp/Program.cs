@@ -10,21 +10,28 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            int i = 0;
-            int[,] array = new int[2, 3]
+            string[][] jagged_str = new string[3][]
             {
-                {1, 2, 3},
-                {4, 5, 6}
+                new string[3] { "SBS", "Game", "Academy"},
+                new string[2] { "강남역", "12번출구로" },
+                new string[] { "나오시면", "금방", "찾을실", "수", "있습니다.", "!!" }
             };
-            foreach(int num in array)
+            for (int i = 0; i < jagged_str.Length; i++)
             {
-                Console.WriteLine(num + " ");
-                i++;
-                if (i % array.GetLength(1) == 0)
+                for (int j = 0; j < jagged_str[i].Length; j++)
                 {
-                    Console.WriteLine();
+                    Console.Write(jagged_str[i][j] + " ");
                 }
+                Console.WriteLine();
             }
+            //foreach (string[] jagged in jagged_str)
+            //{
+            //    foreach (string str_element in jagged)
+            //    {
+            //        Console.Write(str_element + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
         }
     }
 }
