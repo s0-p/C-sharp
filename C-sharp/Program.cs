@@ -6,23 +6,22 @@ using System.Threading.Tasks;
 
 namespace C_sharp
 {   
-   class ArrayClass
-    {
-        static void PrintArray(string[] arr)
-        {
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.Write(arr[i] + "{0}", i < arr.Length - 1 ? " " : "");
-            }
-            Console.WriteLine();
-        }
-    }
     class Program
     {
+        static void PrintArray(int[,] arr)
+        {
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    Console.WriteLine("arr[{0}, {1}] = {2}", i, j, arr[i, j]);
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
-            string[] weekDays = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-            PrintArray(weekDays);
+            PrintArray(new int [,] { { 1, 2 }, { 3, 4 }, { 5,6 }, { 7, 8 } });
         }
     }
 }
