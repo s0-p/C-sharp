@@ -10,11 +10,9 @@ namespace C_sharp
     {
         static void Main(string[] args)
         {
-            int[] orgArr = new int[] { -1, -3, -5, -7, -9 };
-            int[] copyArr = { 2, 4, 6, 8, 10 };
+            int[] orgArr = new int[] { 10, 20, 30, 40 };
+            int[] copyArr = (int[])orgArr.Clone();
             
-            //orgArr의 0부터 copyArr의 2부터에 3개 복사
-            Array.Copy(orgArr, 0, copyArr, 2, 3);
             for (int i = 0; i < copyArr.Length; i++)
             {
                 Console.WriteLine("copyArr[{0}] = {1}", i, copyArr[i]);
