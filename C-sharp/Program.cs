@@ -8,15 +8,20 @@ namespace C_sharp
 {   
     class Program
     {
+        static void Print<T>(T value)
+        {
+            Console.WriteLine(value);
+        }
         static void Main(string[] args)
         {
-            int[] orgArr = new int[] { 10, 20, 30, 40 };
-            int[] copyArr = (int[])orgArr.Clone();
-            
-            for (int i = 0; i < copyArr.Length; i++)
-            {
-                Console.WriteLine("copyArr[{0}] = {1}", i, copyArr[i]);
-            }
+            string name = "박소영";
+            int age = 24;
+            float heignt = 180;
+            double weight = 70.5;
+            Print<string>(name);
+            Print<int>(age);
+            Print<float>(heignt);
+            Print<double>(weight);
         }
     }
 }
