@@ -5,33 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace C_sharp
-{
+{   
+    class PocketMon
+    {
+        private string kind;
+        private string name;
+        public PocketMon(string kind, string name)
+        {
+            this.kind = kind;
+            this.name = name;
+        }
+        public void PrintPocketMon()
+        {
+            Console.WriteLine("종류 : {0} / 이름 : {1}", kind, name);
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            string[][] jagged_str = new string[3][]
+            PocketMon[] pocketMons = new PocketMon[4]; // 배열 생성
+            
+            //각각의 객체 생성 필요
+            pocketMons[0] = new PocketMon("노말", "잠만보");
+            pocketMons[1] = new PocketMon("불꽃", "파이리");
+            pocketMons[2] = new PocketMon("전기", "피카츄");
+            pocketMons[3] = new PocketMon("물", "꼬부기");
+
+            foreach (PocketMon po in pocketMons)
             {
-                new string[3] { "SBS", "Game", "Academy"},
-                new string[2] { "강남역", "12번출구로" },
-                new string[] { "나오시면", "금방", "찾을실", "수", "있습니다.", "!!" }
-            };
-            for (int i = 0; i < jagged_str.Length; i++)
-            {
-                for (int j = 0; j < jagged_str[i].Length; j++)
-                {
-                    Console.Write(jagged_str[i][j] + " ");
-                }
-                Console.WriteLine();
+                po.PrintPocketMon();
             }
-            //foreach (string[] jagged in jagged_str)
-            //{
-            //    foreach (string str_element in jagged)
-            //    {
-            //        Console.Write(str_element + " ");
-            //    }
-            //    Console.WriteLine();
-            //}
         }
     }
 }
