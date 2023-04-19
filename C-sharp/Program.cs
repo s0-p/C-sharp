@@ -18,10 +18,10 @@ namespace C_sharp
             int age = 24;
             float heignt = 180;
             double weight = 70.5;
-            Print<string>(name);
-            Print<int>(age);
-            Print<float>(heignt);
-            Print<double>(weight);
+            Print(name);
+            Print(age);
+            Print(heignt);
+            Print(weight);
         }
     }
 }
