@@ -2,24 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-class List<T>
-{
-    private T[] arr;
-    public List()
-    {
-        arr = new T[2];
-    }
-    public int Length { get { return arr.Length; } }
-    public void InitArray(int index, T value)
-    {
-        arr[index] = value;
-    }
-    public T GetValue(int index)
-    {
-        return arr[index];
-    }
-}    
+using System.Threading.Tasks;  
 
 namespace C_sharp
 {   
@@ -29,25 +12,26 @@ namespace C_sharp
         {
             Console.WriteLine(value);
         }
+        static void CopyArray<T>(T[] src, T[] dest)
+        {
+            src.CopyTo(dest, 0);    //index 0부터 복사
+        }
         static void Main(string[] args)
         {
-            List<int> list1 = new List<int>();
-            List<float> list2 = new List<float>();
-            List<string> list3 = new List<string>();
-            list1.InitArray(0, 58);
-            list1.InitArray(1, 30);
-            list2.InitArray(0, 75.2f);
-            list2.InitArray(1, 65.5f);
-            list3.InitArray(0, "아무개");
-            list3.InitArray(1, "홍길동");
-            for (int i = 0; i < list1.Length; i++)
+            int[] srcInt = new int[] { 1, 2, 3, 4, 5 };
+            int[] tagInt = new int[srcInt.Length];
+            string[] srcStr = new string[] { "hello", "sbs", "game", "academy" };
+            string[] tagStr = new string[srcStr.Length];
+            CopyArray<int>(srcInt, tagInt);
+            CopyArray<string>(srcStr, tagStr);
+            for (int i = 0; i < srcInt.Length; i++)
             {
-                Print("이름: " + list3.GetValue(i));
-                Print("나이: " + list1.GetValue(i));
-                Print("몸무게: " + list2.GetValue(i));
-                Print(" ");
+                Print<int>(tagInt[i]);
             }
-
+            for (int i = 0; i < srcStr.Length; i++)
+            {
+                Print<string>(tagStr[i]);
+            }
         }
     }
 }
