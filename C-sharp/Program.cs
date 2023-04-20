@@ -8,30 +8,24 @@ namespace C_sharp
 {   
     class Program
     {
-        static void Print<T>(T value)
+        delegate int TestDelegate(int a, int b);
+        public static int Plus(int a, int b)
         {
-            Console.WriteLine(value);
+            return a + b;
         }
-        static void CopyArray<T>(T[] src, T[] dest)
+        public static int Minus(int a, int b)
         {
-            src.CopyTo(dest, 0);    //index 0부터 복사
+            return a - b;
         }
+
         static void Main(string[] args)
         {
-            int[] srcInt = new int[] { 1, 2, 3, 4, 5 };
-            int[] tagInt = new int[srcInt.Length];
-            string[] srcStr = new string[] { "hello", "sbs", "game", "academy" };
-            string[] tagStr = new string[srcStr.Length];
-            CopyArray<int>(srcInt, tagInt);
-            CopyArray<string>(srcStr, tagStr);
-            for (int i = 0; i < srcInt.Length; i++)
-            {
-                Print<int>(tagInt[i]);
-            }
-            for (int i = 0; i < srcStr.Length; i++)
-            {
-                Print<string>(tagStr[i]);
-            }
+            TestDelegate calculate = new TestDelegate(Plus);
+            int result = calculate(20, 30);
+            Console.WriteLine("20 + 30 = " + result);
+            calculate = new TestDelegate(Minus);
+            result = calculate(30, 20);
+            Console.WriteLine("30 - 20 = " + result);
         }
     }
 }
