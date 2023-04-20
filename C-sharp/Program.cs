@@ -9,14 +9,17 @@ class Calculator
 {
     public int Plus(int a, int b)
     {
+        Console.WriteLine("{0} + {1} = {2}", a, b, a + b);
         return a + b;
     }
     public int Minus(int a, int b)
     {
+        Console.WriteLine("{0} - {1} = {2}", a, b, a - b);
         return a - b;
     }
     public int Multiply(int a, int b)
     {
+        Console.WriteLine("{0} * {1} = {2}", a, b, a * b);
         return a * b;
     }
 }
@@ -25,17 +28,21 @@ namespace C_sharp
 {   
     class Program
     {
-        public static void PrintCal(int a, int b, TestDelegate callback)
-        {
-            Console.WriteLine(callback(a, b));
-        }
+       
         static void Main(string[] args)
         {
             Calculator cal = new Calculator();
-            PrintCal(10, 20, cal.Plus);
-            PrintCal(10, 20, cal.Minus);
-            PrintCal(10, 20, cal.Multiply);
+            TestDelegate del = new TestDelegate(cal.Plus);
+            del += cal.Minus;
+            del += cal.Multiply;
+            Console.WriteLine("del : Plus, Minus, Multiply");
+            del(10, 20);
 
+            Console.WriteLine();
+            del -= cal.Plus;
+            del -= cal.Minus;
+            Console.WriteLine("del : Multiply");
+            del(10, 20);
         }
     }
 }
