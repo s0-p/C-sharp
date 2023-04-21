@@ -10,17 +10,17 @@ namespace C_sharp
     {
         static void Main()
         {
-            Queue que = new Queue();
-            que.Enqueue(10);
-            que.Enqueue(20);
-            que.Enqueue(30);
-            que.Dequeue();
-            que.Enqueue(4.4);
-            que.Dequeue();
-            que.Enqueue("ABC");
-            while (que.Count > 0)
+            Stack stack = new Stack();
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+            stack.Pop();    //  30
+            stack.Push(4.4);
+            stack.Pop();    // 4.4
+            stack.Push("ABC");
+            while (stack.Count > 0)
             {
-                Console.WriteLine(que.Dequeue());
+                Console.WriteLine(stack.Pop());     //LIFO
             }
         }
     }
