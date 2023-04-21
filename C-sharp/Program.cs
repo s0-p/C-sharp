@@ -4,51 +4,100 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-delegate T TestDelegate<T>(T a, T b);
-class Calculator
+namespace Bookstore
 {
-    public int Plus(int a, int b)
+    using System.Collections;
+
+    public struct Book
     {
-        return a + b;
+        public string Title;
+        public string Author;
+        public decimal Price;
+        public bool Paperback;
+
+        public Book(string title, string author, decimal price, bool paperBack)
+        {
+            Title = title;
+            Author = author;
+            Price = price;
+            Paperback = paperBack;
+        }
     }
-    public float Plus(float a, float b)
+
+    public delegate void ProcessBookDelegate(Book book);
+
+    public class BookDB
     {
-        return a + b;
-    }
-    public int Minus(int a, int b)
-    {
-        return a - b;
-    }
-    public float Minus(float a, float b)
-    {
-        return a - b;
-    }
-    public int Multiply(int a, int b)
-    {
-        return a * b;
-    }
-    public float Multiply(float a, float b)
-    {
-        return a * b;
+        ArrayList list = new ArrayList();
+
+        public void AddBook(string title, string author, decimal price, bool paperBack)
+        {
+            list.Add(new Book(title, author, price, paperBack));
+        }
+
+        public void ProcessPaperbackBooks(ProcessBookDelegate processBook)
+        {
+            foreach (Book b in list)
+            {
+                if (b.Paperback)
+                    processBook(b);
+            }
+        }
     }
 }
 
-namespace C_sharp
-{   
-    class Program
+
+namespace BookTestClient
+{
+    using Bookstore;
+    class PriceTotaller
     {
-        public static void PrintCal<T>(T a, T b, TestDelegate<T> callback)
+        int countBooks = 0;
+        decimal priceBooks = 0.0m;
+
+        internal void AddBookToTotal(Book book)
         {
-            Console.WriteLine(callback(a, b));
+            countBooks += 1;
+            priceBooks += book.Price;
         }
-       
-        static void Main(string[] args)
+
+        internal decimal AveragePrice()
         {
-            Calculator cal = new Calculator();
-            PrintCal<int>(10, 20, cal.Plus);
-            PrintCal<float>(54.6f, 96.32f, cal.Plus);
-            PrintCal<float>(200.5f, 120.10f, cal.Multiply);
-            PrintCal<float>(36.5f, 42.3f, cal.Multiply);
+            return priceBooks / countBooks;
+        }
+    }
+
+    class TestBookDB
+    {
+        static void PrintTitle(Book b)
+        {
+            System.Console.WriteLine("   {0}", b.Title);
+        }
+
+        static void Main()
+        {
+            BookDB bookDB = new BookDB();
+
+            AddBooks(bookDB);
+
+            System.Console.WriteLine("Paperback Book Titles:");
+
+            bookDB.ProcessPaperbackBooks(PrintTitle);
+
+            PriceTotaller totaller = new PriceTotaller();
+
+            bookDB.ProcessPaperbackBooks(totaller.AddBookToTotal);
+
+            System.Console.WriteLine("Average Paperback Book Price: ${0:#.##}",
+                    totaller.AveragePrice());
+        }
+
+        static void AddBooks(BookDB bookDB)
+        {
+            bookDB.AddBook("The C Programming Language", "Brian W. Kernighan and Dennis M. Ritchie", 19.95m, true);
+            bookDB.AddBook("The Unicode Standard 2.0", "The Unicode Consortium", 39.95m, true);
+            bookDB.AddBook("The MS-DOS Encyclopedia", "Ray Duncan", 129.95m, false);
+            bookDB.AddBook("Dogbert's Clues for the Clueless", "Scott Adams", 12.00m, true);
         }
     }
 }
