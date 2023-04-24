@@ -10,15 +10,20 @@ namespace C_sharp
     {
         static void Main()
         {
-            LinkedList<int> linkedList = new LinkedList<int>();
-            linkedList.AddFirst(1);
-            LinkedListNode<int> firstNode = linkedList.First;
-            LinkedListNode<int> currentNode = linkedList.AddAfter(firstNode, 3);
-            currentNode = linkedList.AddBefore(currentNode, 2);
-            Console.WriteLine("첫번째 노드의 값: {0}", currentNode.Previous.Value);
-            Console.WriteLine("두번째 노드의 값: {0}", currentNode.Value);
-            Console.WriteLine("세번째 노드의 값: {0}", currentNode.Next.Value);
-
+            List<string> list = new List<string>();
+            list.Add("트럼프");
+            list.Add("오바마");
+            list.Add("힐러리");
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine("{0}. {1}대통령", i, list[i]);
+            }
+            Console.WriteLine("컬렉션의 현재 배열 크기 {0}", list.Capacity);
+            Console.WriteLine("컬렉션에 저장된 요소 개수 {0}", list.Count);
+            list.Insert(1, "부시");
+            Console.WriteLine("리스트 1번째 대통령 {0}", list[1]);
+            list.RemoveAt(1);
+            Console.WriteLine("리스트 1번째 대통령 {0}", list[1]);
         }
     }
 }
