@@ -10,14 +10,14 @@ namespace C_sharp
     {
         static void Main()
         {
-            Queue<int> genQueue = new Queue<int>();
-            genQueue.Enqueue(1);
-            genQueue.Enqueue(2);
-            genQueue.Enqueue(3);
-            Console.WriteLine("[Queue]");
-            while(genQueue.Count > 0)
+            Stack<int> genStack = new Stack<int>();
+            genStack.Push(1);
+            genStack.Push(2);
+            genStack.Push(3);
+            Console.WriteLine("[Stack]");
+            while(genStack.Count > 0)
             {
-                Console.WriteLine("Value = {0}", genQueue.Dequeue());
+                Console.WriteLine("Value = {0}", genStack.Pop());
             }
             Console.WriteLine();
         }
