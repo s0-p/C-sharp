@@ -10,20 +10,17 @@ namespace C_sharp
     {
         static void Main()
         {
-            SortedList<int, string> colorSort = new SortedList<int, string>();
-            colorSort.Add(1, "Red");
-            colorSort.Add(3, "Green");
-            colorSort.Add(2, "Blue");
-            foreach (KeyValuePair<int, string> color in colorSort)
+            LinkedList<string> genLL = new LinkedList<string>();
+            genLL.AddLast("4등");
+            genLL.AddFirst("1등");
+            genLL.AddAfter(genLL.Find("1등"), "2등");
+            genLL.AddBefore(genLL.Find("4등"), "3등");
+            Console.WriteLine("[LinkedList]");
+            genLL.Remove("1등");
+            foreach (string str in genLL)
             {
-                Console.WriteLine("Key {0} Color {1}", color.Key, color.Value);
+                Console.WriteLine("Value = {0}", str);
             }
-            Console.WriteLine("현재 리스트 크기: {0}", colorSort.Capacity);
-            colorSort.TrimExcess();
-            Console.WriteLine("현재 리스트 크기: {0}, 요소의 개수: {1}", colorSort.Capacity, colorSort.Count);
-            colorSort.Remove(2);
-            colorSort.TrimExcess();
-            Console.WriteLine("현재 리스트 크기: {0}, 요소의 개수: {1}", colorSort.Capacity, colorSort.Count);
         }
     }
 }
