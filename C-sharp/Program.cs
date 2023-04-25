@@ -3,91 +3,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+public class Shape
+{
+    public const double PI = Math.PI;
+    protected double x, y;
+    public Shape() { }
+    public Shape(double x, double y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+    public virtual double Area()
+    {
+        return x * y;
+    }
 
-class Car
+}
+public class Circle : Shape
 {
-    public virtual void DescribeCar()
+    public Circle(double r) : base(r, 0) { }
+    public override double Area()
     {
-        Console.WriteLine("4개의 휠이 달린 바퀴와 엔진이 있습니다.");
-        ShowDetails();
-    }
-    public virtual void ShowDetails()
-    {
-        Console.WriteLine("4명의 사람을 태울 수 있습니다.");
+        return PI * x * x;
     }
 }
-class ConvertibleCar : Car
+public class Sphere : Shape
 {
-    //DescribeCar()는 부모클래스로 접근하므로 TestCars1에서 적용 X
-    public new void ShowDetails()
+    public Sphere(double r) : base(r, 0) { }
+    public override double Area()
     {
-        Console.WriteLine("지붕이 열립니다.");
+        return 4 * PI * x * x;
     }
 }
-class Minivan : Car
+public class Cylinder : Shape
 {
-    public override void ShowDetails()
+    public Cylinder(double r, double h) : base(r, h) { }
+    public override double Area()
     {
-        Console.WriteLine("7명을 태울 수 있습니다.");
+        return 2 * PI * x * x + 2 * PI * x * y;
     }
 }
 
 class Program
 {
-    public static void TestCars1()
-    {
-        Console.WriteLine("\nTestCars1");
-        Console.WriteLine("-----------");
-
-        Car car1 = new Car();
-        car1.DescribeCar();
-        Console.WriteLine("-----------");
-
-        ConvertibleCar car2 = new ConvertibleCar();
-        car2.DescribeCar();
-        Console.WriteLine("-----------");
-
-        Minivan car3 = new Minivan();
-        car3.DescribeCar();
-        Console.WriteLine("-----------");
-    }
-    public static void TestCars2()
-    {
-        Console.WriteLine("\nTestCars2");
-        Console.WriteLine("-----------");
-                                               //Car의 파생클래스이므로 가능
-        var cars = new List<Car> { new Car(), new ConvertibleCar(), new Minivan() };
-        foreach (var car in cars)
-        {
-            car.DescribeCar();
-            Console.WriteLine("-----------");
-        }
-    }
-    public static void TestCars3()
-    {
-        Console.WriteLine("\nTestCar3");
-        Console.WriteLine("-----------");
-        ConvertibleCar car2 = new ConvertibleCar();
-        Minivan car3 = new Minivan();
-        car2.ShowDetails();
-        car3.ShowDetails();
-    }
-    public static void TestCars4()
-    {
-        Console.WriteLine("\nTestCar4");
-        Console.WriteLine("-----------");
-        Car car2 = new ConvertibleCar();
-        Car car3 = new Minivan();
-        car2.ShowDetails();
-        car3.ShowDetails();
-    }
-    
     static void Main()
     {
-        TestCars1();
-        TestCars2();
-        TestCars3();
-        TestCars4();
+        double r = 3.0, h = 5.0;
+        Shape c = new Circle(r);
+        Shape s = new Sphere(r);
+        Shape l = new Cylinder(r, h);
+        Console.WriteLine("원의 면적    = {0:F2}", c.Area());
+        Console.WriteLine("구의 면적    = {0:F2}", s.Area());
+        Console.WriteLine("원통의 면적  = {0:F2}", l.Area());
     }
 }
 
