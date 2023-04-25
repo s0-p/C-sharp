@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+
 namespace C_sharp
 {
     class Program
     {
-        static void Main()
+        class BaseClass
         {
-            Stack<int> genStack = new Stack<int>();
-            genStack.Push(1);
-            genStack.Push(2);
-            genStack.Push(3);
-            Console.WriteLine("[Stack]");
-            while(genStack.Count > 0)
+            public void Method1()
             {
-                Console.WriteLine("Value = {0}", genStack.Pop());
+                Console.WriteLine("부모클래스 - Method1");
             }
-            Console.WriteLine();
+        }
+        class DreivedClass : BaseClass
+        {
+            public void Method2()
+            {
+                Console.WriteLine("자식클래스 - Method2");
+            }
+
+            static void Main(string[] args)
+            {
+                BaseClass bc = new BaseClass();
+                DreivedClass dc = new DreivedClass();
+                BaseClass bcdc = new DreivedClass();
+                bc.Method1();
+                dc.Method1();
+                dc.Method2();
+                bcdc.Method1();
+            }
         }
     }
 }
