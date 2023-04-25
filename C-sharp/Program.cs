@@ -72,12 +72,22 @@ class Program
         car2.ShowDetails();
         car3.ShowDetails();
     }
+    public static void TestCars4()
+    {
+        Console.WriteLine("\nTestCar4");
+        Console.WriteLine("-----------");
+        Car car2 = new ConvertibleCar();
+        Car car3 = new Minivan();
+        car2.ShowDetails();
+        car3.ShowDetails();
+    }
     
     static void Main()
     {
         TestCars1();
         TestCars2();
         TestCars3();
+        TestCars4();
     }
 }
 
