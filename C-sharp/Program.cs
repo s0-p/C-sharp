@@ -4,22 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_sharp
+public class BaseC
 {
-    class BaseClass
+    public class NestedC
     {
-        public static int x = 55;
-        public static int y = 22;
+        public int x = 200;
+        public int y;
     }
-    class DreivedClass : BaseClass
-    {
-        new public static int x = 100;
+}
 
-        static void Main(string[] args)
-        {
-            Console.WriteLine(x);   //100
-            Console.WriteLine(BaseClass.x); //55
-            Console.WriteLine(y);   //22
-        }
+public class DrivedC : BaseC
+{
+    new public class NestedC
+    {
+        public int x = 100;
+        public int y;
+        public int z;
+    }
+
+    static void Main(string[] args)
+    {
+        NestedC c1 = new NestedC();
+        BaseC.NestedC c2 = new BaseC.NestedC();
+        Console.WriteLine(c1.x);    //100
+        Console.WriteLine(c2.x);    //200
     }
 }
