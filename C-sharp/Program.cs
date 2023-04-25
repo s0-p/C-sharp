@@ -10,14 +10,22 @@ namespace C_sharp
     {
         class BaseClass
         {
-            public void Method1()
+            public virtual void Method1()   //가상 함수
             {
                 Console.WriteLine("부모클래스 - Method1");
+            }
+            public void Method2()
+            {
+                Console.WriteLine("부모클래스 - Method2");
             }
         }
         class DreivedClass : BaseClass
         {
-            public void Method2()
+            public override void Method1()   //덮어쓰기
+            {
+                Console.WriteLine("자식클래스 - Method1");
+            }
+            public new void Method2()   //한정자 ->  자식클래스 한정으로 새로 정의
             {
                 Console.WriteLine("자식클래스 - Method2");
             }
@@ -31,6 +39,7 @@ namespace C_sharp
                 dc.Method1();
                 dc.Method2();
                 bcdc.Method1();
+                bcdc.Method2();
             }
         }
     }
