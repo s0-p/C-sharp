@@ -5,3 +5,10 @@ D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.csproj.AssemblyR
 D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.csproj.CoreCompileInputs.cache
 D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.exe
 D:\Desktop\gameProgramming\C#\C-sharp\C-sharp\obj\Debug\C-sharp.pdb
+C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\bin\Debug\C-sharp.exe.config
+C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\bin\Debug\C-sharp.exe
+C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\bin\Debug\C-sharp.pdb
+C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.csproj.AssemblyReference.cache
+C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.csproj.CoreCompileInputs.cache
+C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.exe
+C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.pdb

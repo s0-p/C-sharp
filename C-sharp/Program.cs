@@ -3,44 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-public class Shape
-{
-    public const double PI = Math.PI;
-    protected double x, y;
-    public Shape() { }
-    public Shape(double x, double y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-    public virtual double Area()
-    {
-        return x * y;
-    }
 
-}
-public class Circle : Shape
+public class Character
 {
-    public Circle(double r) : base(r, 0) { }
-    public override double Area()
+    public virtual void ReadyToBattle()
     {
-        return PI * x * x;
+        Console.WriteLine("전투 태세를 취합니다.");
     }
 }
-public class Sphere : Shape
+public class Knight : Character
 {
-    public Sphere(double r) : base(r, 0) { }
-    public override double Area()
+    public override void ReadyToBattle()
     {
-        return 4 * PI * x * x;
+        Console.WriteLine("기사 : 칼을 뽑아 전투 태세를 취합니다.");
+    }
+    public override string ToString()
+    {
+        return "기사 클래스";
     }
 }
-public class Cylinder : Shape
+public class Acher : Character
 {
-    public Cylinder(double r, double h) : base(r, h) { }
-    public override double Area()
+    public override void ReadyToBattle()
     {
-        return 2 * PI * x * x + 2 * PI * x * y;
+        Console.WriteLine("궁수 : 활을 뽑아 전투 태세를 취합니다.");
+    }
+    public override string ToString()
+    {
+        return "궁수 클래스";
     }
 }
 
@@ -48,13 +38,16 @@ class Program
 {
     static void Main()
     {
-        double r = 3.0, h = 5.0;
-        Shape c = new Circle(r);
-        Shape s = new Sphere(r);
-        Shape l = new Cylinder(r, h);
-        Console.WriteLine("원의 면적    = {0:F2}", c.Area());
-        Console.WriteLine("구의 면적    = {0:F2}", s.Area());
-        Console.WriteLine("원통의 면적  = {0:F2}", l.Area());
+        Character[] characters = new Character[2];
+
+        characters[0] = new Knight();
+        characters[1] = new Acher();
+
+        for (int i = 0; i < characters.Length; i++)
+        {
+            Console.WriteLine(characters[i].ToString());
+            characters[i].ReadyToBattle();
+        }
     }
 }
 
