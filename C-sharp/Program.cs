@@ -4,34 +4,72 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-interface IPoint
+public class Student
 {
-    int X { get; set; }
-    int Y { get; set; }
+    public int num { get; set; }
+    public string name { get; set; }
 }
-class Point : IPoint
+public class StudentList
 {
-    int x;
-    int y;
-    public Point(int x, int y)
+    public List<Student> list = new List<Student>();
+    public int Count { get { return list.Count; } }
+    public void Add(Student std)
     {
-        this.x = x;
-        this.y = y;
+        list.Add(std);
     }
-    public int X { get { return x; } set { x = value; } }
-    public int Y { get { return y; } set { y = value; } }
-    
+    public void Clear()
+    {
+        list.Clear();
+    }
+    Ascending sortAscending = new Ascending();
+    Descending sortDescending = new Descending();
+    public void SorAscending()
+    {
+        list.Sort(sortAscending);
+    }
+    public void SortDescending()
+    {
+        list.Sort(sortDescending);
+    }
+    class Ascending : IComparer<Student>
+    {
+        public int Compare(Student a, Student b)
+        {
+            return a.num.CompareTo(b.num);
+        }
+    }
+    class Descending : IComparer<Student>
+    {
+        public int Compare(Student a, Student b)
+        {
+            return b.num.CompareTo(a.num);
+        }
+    }
 }
+
+
 class Program
 {
-    static void PrintPoint(IPoint p)
-    {
-        Console.WriteLine("x={0}, y={1}", p.X, p.Y);
-    }
     static void Main()
     {
-        Point p = new Point(2, 3);
-        Console.Write("현재 촤표는 : ");
-        PrintPoint(p);
+        List<Student> tmplist = new List<Student>() { new Student() { num=1, name="소영"},
+                                                      new Student() { num=2, name="수지"},
+                                                      new Student() { num=3, name="설현"},
+        };
+        StudentList stdList = new StudentList();
+        for (int i = 0; i < tmplist.Count; i++)
+        {
+            stdList.Add(tmplist[i]);
+        }
+        stdList.SortDescending();
+        for (int i = 0; i < stdList.Count; i++)
+        {
+            Console.WriteLine("번호 : {0}, 이름 : {1}", stdList.list[i].num, stdList.list[i].name);
+        }
+        stdList.SorAscending();
+        for (int i = 0; i < stdList.Count; i++)
+        {
+            Console.WriteLine("번호 : {0}, 이름 : {1}", stdList.list[i].num, stdList.list[i].name);
+        }
     }
 }
