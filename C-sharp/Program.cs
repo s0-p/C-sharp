@@ -4,46 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-interface interA
+interface CarControl
 {
-    void a();
+    void Gear(int value);
+    void Off();
 }
-interface interB
+interface AudioControl
 {
-    void b();
+    void Volum(int value);
+    void Off();
 }
-interface interC : interA
+public class Car : CarControl, AudioControl
 {
-    void c();
-}
-class MultiInheritance : interB, interC
-{
-    public void a() //interC가 interA를 상속받았으므로 구현 필요
+    public void Gear(int value)
     {
-        Console.WriteLine("a메소드 호출");
+        Console.WriteLine("현재 기어는 {0}입니다.", value);
     }
-    public void b()
+    public void Volum(int value)
     {
-        Console.WriteLine("b메소드 호출");
+        Console.WriteLine("현재 볼륨은 {0}입니다.", value);
     }
-    public void c()
+    public void Off()   //??
     {
-        Console.WriteLine("c메소드 호출");
+        Console.WriteLine("시동을 껐습니다.");
     }
 }
+
 class Program
 {
     static void Main()
     {
-        MultiInheritance mi = new MultiInheritance();
-        interA interface1 = mi;
-        interB interface2 = mi;
-        interC interface3 = mi;
-        interface1.a();
-        interface2.b();
-        interface3.c();
-        mi.a();
-        mi.b();
-        mi.c();
+        Car mycar = new Car();
+        mycar.Gear(3);
+        mycar.Volum(5);
+        mycar.Off();
     }
 }
