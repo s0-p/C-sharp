@@ -4,47 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-interface CarControl
+interface IPoint
 {
-    void Gear(int value);
-    void Off();
+    int X { get; set; }
+    int Y { get; set; }
 }
-interface AudioControl
+class Point : IPoint
 {
-    void Volum(int value);
-    void Off();
+    int x;
+    int y;
+    public Point(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+    public int X { get { return x; } set { x = value; } }
+    public int Y { get { return y; } set { y = value; } }
+    
 }
-public class Car : CarControl, AudioControl
-{
-    public void Gear(int value)
-    {
-        Console.WriteLine("현재 기어는 {0}입니다.", value);
-    }
-    public void Volum(int value)
-    {
-        Console.WriteLine("현재 볼륨은 {0}입니다.", value);
-    }
-    void CarControl.Off()
-    {
-        Console.WriteLine("자동차 시동을 끕니다.");
-    }
-    void AudioControl.Off()
-    {
-        Console.WriteLine("오디오 전원을 끕니다.");
-    }
-}
-
 class Program
 {
+    static void PrintPoint(IPoint p)
+    {
+        Console.WriteLine("x={0}, y={1}", p.X, p.Y);
+    }
     static void Main()
     {
-        Car mycar = new Car();
-        mycar.Gear(3);
-        mycar.Volum(5);
-
-        CarControl carCon = mycar;
-        AudioControl audioCon = mycar;
-        carCon.Off();
-        audioCon.Off();
+        Point p = new Point(2, 3);
+        Console.Write("현재 촤표는 : ");
+        PrintPoint(p);
     }
 }
