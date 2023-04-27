@@ -4,71 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-abstract class Animal
+interface interA
 {
-    public abstract void Bark();
-    public abstract void Attack();
+    void a();
 }
-class Cat : Animal
+interface interB
 {
-    public Cat()
-    {
-        Console.WriteLine("나는 고양이 입니다.");
-    }
-    public override void Bark()
-    {
-        Console.WriteLine("냐옹");
-    }
-    public override void Attack()
-    {
-        Console.WriteLine("핡퀴기 공격");
-    }
+    void b();
 }
-class Dog : Animal
+interface interC : interA
 {
-    public Dog()
-    {
-        Console.WriteLine("나는 개입니다.");
-    }
-    public override void Bark()
-    {
-        Console.WriteLine("멍멍");
-    }
-    public override void Attack()
-    {
-        Console.WriteLine("물기 공격");
-    }
+    void c();
 }
-class Bird : Animal
+class MultiInheritance : interB, interC
 {
-    public Bird()
+    public void a() //interC가 interA를 상속받았으므로 구현 필요
     {
-        Console.WriteLine("나는 새입니다.");
+        Console.WriteLine("a메소드 호출");
     }
-    public override void Bark()
+    public void b()
     {
-        Console.WriteLine("짹짹");
+        Console.WriteLine("b메소드 호출");
     }
-    public override void Attack()
+    public void c()
     {
-        Console.WriteLine("쪼기 공격");
+        Console.WriteLine("c메소드 호출");
     }
 }
 class Program
 {
     static void Main()
     {
-        Cat cat = new Cat();
-        Dog dog = new Dog();
-        Bird bird = new Bird();
-        cat.Bark();
-        dog.Bark();
-        bird.Bark();
-
-        List<Animal> listAni = new List<Animal>() { new Cat(), new Dog(), new Bird() };
-        for (int i = 0; i < listAni.Count; i++)
-        {
-            listAni[i].Attack();
-        }
+        MultiInheritance mi = new MultiInheritance();
+        interA interface1 = mi;
+        interB interface2 = mi;
+        interC interface3 = mi;
+        interface1.a();
+        interface2.b();
+        interface3.c();
+        mi.a();
+        mi.b();
+        mi.c();
     }
 }
