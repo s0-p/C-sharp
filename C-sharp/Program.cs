@@ -7,7 +7,14 @@ abstract class Abstract
 {
     protected int x = 10;
     public abstract int X { get; set; }
-    public abstract void Func();
+    public virtual void Func()
+    {
+        Console.WriteLine("가상 클래스 선언");
+    }
+    public void Func2()
+    {
+        Console.WriteLine("일반 메소드 호출");
+    }
 }
 class General : Abstract
 {
@@ -18,7 +25,8 @@ class General : Abstract
     }
     public override void Func()
     {
-        Console.WriteLine("추상화 클래스 구현");
+        base.Func();
+        Console.WriteLine("가상 클래스 구현");
     }
 }
 
@@ -29,5 +37,6 @@ class Program
         General gn = new General();
         Console.WriteLine("프로퍼티 X의 값 : " + gn.X);
         gn.Func();
+        gn.Func2();
     }
 }
