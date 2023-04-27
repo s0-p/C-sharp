@@ -3,40 +3,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-abstract class Abstract
-{
-    protected int x = 10;
-    public abstract int X { get; set; }
-    public virtual void Func()
-    {
-        Console.WriteLine("가상 클래스 선언");
-    }
-    public void Func2()
-    {
-        Console.WriteLine("일반 메소드 호출");
-    }
-}
-class General : Abstract
-{
-    public override int X
-    {
-        get { return x + 20; }
-        set { x = value; }
-    }
-    public override void Func()
-    {
-        base.Func();
-        Console.WriteLine("가상 클래스 구현");
-    }
-}
 
+abstract class Animal
+{
+    public abstract void Bark();
+    public abstract void Attack();
+}
+class Cat : Animal
+{
+    public Cat()
+    {
+        Console.WriteLine("나는 고양이 입니다.");
+    }
+    public override void Bark()
+    {
+        Console.WriteLine("냐옹");
+    }
+    public override void Attack()
+    {
+        Console.WriteLine("핡퀴기 공격");
+    }
+}
+class Dog : Animal
+{
+    public Dog()
+    {
+        Console.WriteLine("나는 개입니다.");
+    }
+    public override void Bark()
+    {
+        Console.WriteLine("멍멍");
+    }
+    public override void Attack()
+    {
+        Console.WriteLine("물기 공격");
+    }
+}
+class Bird : Animal
+{
+    public Bird()
+    {
+        Console.WriteLine("나는 새입니다.");
+    }
+    public override void Bark()
+    {
+        Console.WriteLine("짹짹");
+    }
+    public override void Attack()
+    {
+        Console.WriteLine("쪼기 공격");
+    }
+}
 class Program
 {
     static void Main()
     {
-        General gn = new General();
-        Console.WriteLine("프로퍼티 X의 값 : " + gn.X);
-        gn.Func();
-        gn.Func2();
+        Cat cat = new Cat();
+        Dog dog = new Dog();
+        Bird bird = new Bird();
+        cat.Bark();
+        dog.Bark();
+        bird.Bark();
+
+        List<Animal> listAni = new List<Animal>() { new Cat(), new Dog(), new Bird() };
+        for (int i = 0; i < listAni.Count; i++)
+        {
+            listAni[i].Attack();
+        }
     }
 }
