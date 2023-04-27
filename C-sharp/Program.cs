@@ -24,9 +24,13 @@ public class Car : CarControl, AudioControl
     {
         Console.WriteLine("현재 볼륨은 {0}입니다.", value);
     }
-    public void Off()   //??
+    void CarControl.Off()   //??
     {
-        Console.WriteLine("시동을 껐습니다.");
+        Console.WriteLine("자동차 시동을 끕니다.");
+    }
+    void AudioControl.Off()
+    {
+        Console.WriteLine("오디오 전원을 끕니다.");
     }
 }
 
@@ -37,6 +41,10 @@ class Program
         Car mycar = new Car();
         mycar.Gear(3);
         mycar.Volum(5);
-        mycar.Off();
+
+        CarControl carCon = mycar;
+        AudioControl audioCon = mycar;
+        carCon.Off();
+        audioCon.Off();
     }
 }
