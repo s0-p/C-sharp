@@ -3,35 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-class Polygon
+interface Polygon
 {
-    public virtual int area(int a)
-    {
-        return 0;
-    }
-    public virtual int perimeter(int a)
-    {
-        return 0;
-    }
+    int area(int a);
+
+    int perimeter(int a);
 }
 class Squre : Polygon
 {
-    public override int area(int a)
+    public int area(int a)
     {
         return a * a;
     }
-    public override int perimeter(int a)
+    public int perimeter(int a)
     {
         return 4 * a;
     }
 }
 class Triangle : Polygon
 {
-    public override int area(int a)
+    public int area(int a)
     {
         return a * a / 2;
     }
-    public override int perimeter(int a)
+    public int perimeter(int a)
     {
         return 3 * a;
     }
