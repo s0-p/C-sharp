@@ -8,10 +8,12 @@ using System.IO;
 class Program
 {   private static void FileRead(string filename)
     {
-        string path = @"C:\test\" + filename;
-        TextReader tr = new StreamReader(path);
-        string readText = tr.ReadToEnd();
-        tr.Close();
+        string path = @"D:\test\" + filename;
+        FileStream file = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read);
+        StreamReader sr = new StreamReader(file);
+        string readText = sr.ReadToEnd();
+        sr.Close();
+        file.Close();
         Console.WriteLine(readText);
     }
     static void Main()
