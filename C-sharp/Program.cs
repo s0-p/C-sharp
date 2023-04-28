@@ -3,48 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-class BaseC
+class Polygon
 {
-    public virtual void PrintMethod()
+    public virtual int area(int a)
     {
-        Console.WriteLine("부모 클래스 Method");
+        return 0;
+    }
+    public virtual int perimeter(int a)
+    {
+        return 0;
     }
 }
-class DrivedC : BaseC
+class Squre : Polygon
 {
-    public override void PrintMethod()
+    public override int area(int a)
     {
-        Console.WriteLine("부모 Method 재정의");
+        return a * a;
     }
-    public void PrintMethod2()
+    public override int perimeter(int a)
     {
-        Console.WriteLine("자식 클래스 Method");
+        return 4 * a;
+    }
+}
+class Triangle : Polygon
+{
+    public override int area(int a)
+    {
+        return a * a / 2;
+    }
+    public override int perimeter(int a)
+    {
+        return 3 * a;
     }
 }
 
 class Program
 {
-    void CastingTest(object obj)
-    {
-        BaseC baseC;
-        bool already = obj is BaseC;
-        if (already)
-        {
-            baseC = obj as BaseC;
-            if (baseC != null)
-            {
-                baseC.PrintMethod();
-            }
-        }
-        BaseC baseC2 = (BaseC)obj;
-        baseC2.PrintMethod();
-    }
     static void Main()
     {
-        DrivedC drivedC = new DrivedC();
-        new Program().CastingTest(drivedC);
-        drivedC.PrintMethod();
-        drivedC.PrintMethod2();
+        Polygon sq = new Squre();
+        Polygon tri = new Triangle();
+        Console.WriteLine("area: {0}, perimeter: {1}", sq.area(2), sq.perimeter(4));
+        Console.WriteLine("area: {0}, perimeter: {1}", tri.area(3), tri.perimeter(5));
     }
 }
