@@ -6,20 +6,30 @@ using System.Threading.Tasks;
 using System.IO;
 
 class Program
-{   private static void FileWrite(string fileName, string text)
+{   
+    public static byte[] WriteStringBytes(string str, FileStream fs)
+    {
+        byte[] byteStr = new UTF8Encoding(true).GetBytes(str);
+        fs.Write(byteStr, 0, byteStr.Length);
+        return byteStr;
+    }
+    private static void FileRead(string fileName)
     {
         string path = @"D:\test\" + fileName;
-        FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write);
-        StreamWriter sw = new StreamWriter(fs);
-        sw.WriteLine(text);
-        //sw.Flush();
-        sw.Close();
-        Console.WriteLine("저장 완료");
+        string outStr = "안녕하세요. 박소영입니다.";
+        byte[] readByte = new byte[1024];
+        FileStream file = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        WriteStringBytes(outStr, file);
+        file.Seek(0, SeekOrigin.Begin);
+        UTF8Encoding utf8 = new UTF8Encoding(true);
+        file.Read(readByte, 0, readByte.Length);
+        Console.WriteLine(utf8.GetString(readByte));
+        file.Close();
     }
     static void Main()
     {
-        Console.WriteLine("읽어올 파일 이름을 입력해 주세요.");
+        Console.Write("파일 이름을 입력해주세요 : ");
         string fileName = Console.ReadLine();
-        FileWrite(fileName, "안녕하세요 SBS 게임 아카데미 입니다.");
+        FileRead(fileName);
     }
 }
