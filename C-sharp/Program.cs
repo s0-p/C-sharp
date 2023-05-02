@@ -14,8 +14,15 @@ class Program
         try
         {
             DirectoryInfo dinfo = new DirectoryInfo(path);
-            dinfo.Create();
-            Console.WriteLine("폴더 생성 완료");
+            if (!dinfo.Exists)
+            {
+                dinfo.Create();
+                Console.WriteLine("폴더 생성 완료");
+            }
+            else
+            {
+                Console.WriteLine("이미 폴더가 존재합니다.");
+            }
         }
         catch(Exception e)
         {
