@@ -7,28 +7,21 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
-{   
-    private static void FileCreate(string fileName)
+{
+    private static void FileRename ()
     {
-        string path = @"D:\test\" + fileName;
-        FileInfo fileInfo = new FileInfo(path);
+        FileInfo file = new FileInfo(@"D:\test\test.txt");
 
-        if (!fileInfo.Exists)
+        if (file.Exists)
         {
-            var file = fileInfo.Open(FileMode.Create, FileAccess.ReadWrite);
-            file.Close();
+            file.MoveTo(@"D:\test\temp.txt");
         }
-        else
-        {
-            Console.WriteLine("파일이 이미 있습니다.");
-        }
+        
     }
     
     static void Main()
     {
-        Console.Write("생성할 파일 이름을 입력해주세요: ");
-        string fileName = Console.ReadLine();
-        FileCreate(fileName);
+        FileRename();
     }
     
 }
