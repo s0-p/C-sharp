@@ -8,6 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
 {
+    static bool checkFiles(string s)
+    {
+        string[] exts = new[] { ".bmp", ".txt", ".gif" };
+        return exts.Contains(Path.GetExtension(s), StringComparer.OrdinalIgnoreCase);   // 확장자, 대소문자 구분x
+    }
     static void GetFiles()
     {
         string path = @"D:\test\TestDirectory";
@@ -16,14 +21,20 @@ class Program
             DirectoryInfo dinfo = new DirectoryInfo(path);
             if (dinfo.Exists)
             {
-                FileInfo[] files = dinfo.GetFiles("*.txt", SearchOption.TopDirectoryOnly);
+                FileInfo[] files = dinfo.GetFiles("*.*", SearchOption.TopDirectoryOnly);
+                string[] fileStr = new string[files.Length];
                 for (int i = 0; i < files.Length; i++)
                 {
-                    Console.WriteLine(files[i].ToString());
+                    fileStr[i] = files[i].ToString();
+                }
+                string[] result = fileStr.Where(checkFiles).ToArray();
+                for (int i = 0; i < result.Length; i++)
+                {
+                    Console.WriteLine(result[i]);
                 }
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Console.WriteLine(e.Message);
         }
