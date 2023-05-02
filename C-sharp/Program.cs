@@ -7,24 +7,20 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
-{ 
+{
+    delegate int MyDelegate(int a, int b);
     static void Main()
     {
-        var temp = new { age = 11, name = "민수" };
-        Console.WriteLine("이름 : {0}, 나이 : {1}", temp.name, temp.age);
-        var tempArray = new
+        MyDelegate Add = delegate (int a, int b)
         {
-            Int = new int[] { 100, 200, 300, 400 },
-            Float = new float[] { 0.5f, 1.5f, 2.5f }
+            return a + b;
         };
-        for (int i = 0; i < tempArray.Int.Length; i++)
+        MyDelegate Multi = delegate (int a, int b)
         {
-            Console.WriteLine("tempArray.Int[{0}] : {1}", i, tempArray.Int[i]);
-        }
-        for (int i = 0; i < tempArray.Float.Length; i++)
-        {
-            Console.WriteLine("tempArray.Float[{0}] : {1}", i, tempArray.Float[i]);
-        }
+            return a * b;
+        };
+        Console.WriteLine(Add(100, 200));
+        Console.WriteLine(Multi(20, 50));
     }
     
 }
