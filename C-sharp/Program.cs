@@ -8,48 +8,23 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
 {
-    private static void FileSave(string fileName, string text)
+    static void CreateDirectory()
     {
-        string path = string.Format(@"D:\test\{0}", fileName);
-        FileInfo file = new FileInfo(path);
-        if (file.Exists)
+        string path = @"D:\test\TestDirectory";
+        try
         {
-            Console.WriteLine("같은 파일이 존재합니다. 덮어 씌우시겠습까? (yes, no) ");
-            string result = Console.ReadLine();
-            if (result == "yes")
-            {
-                StreamWriter writer = file.CreateText();
-                writer.WriteLine(text);
-                writer.Close();
-            }
-            else
-            {
-                int count = 0;
-                FileInfo tmpFile = null;
-                do
-                {
-                    path = string.Format(@"D:\test\사본{0}_{1}", count, fileName);
-                    tmpFile = new FileInfo(path);
-                    count++;
-                } while (tmpFile.Exists);
-                StreamWriter writer = tmpFile.CreateText();
-                writer.WriteLine(text);
-                writer.Close();
-            }
+            DirectoryInfo dinfo = new DirectoryInfo(path);
+            dinfo.Create();
+            Console.WriteLine("폴더 생성 완료");
         }
-        else
+        catch(Exception e)
         {
-            StreamWriter writer = file.CreateText();
-            writer.WriteLine(text);
-            writer.Close();
+            Console.WriteLine(e.Message);
         }
     }
-    
     static void Main()
     {
-        Console.Write("파일 이름을 입력해주세요: ");
-        string path = Console.ReadLine();
-        FileSave(path, "hello world");
+        CreateDirectory();
     }
     
 }
