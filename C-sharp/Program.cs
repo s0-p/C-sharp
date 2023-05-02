@@ -8,20 +8,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
 {
-    static void CreateDirectory()
+    static void GetFiles()
     {
         string path = @"D:\test\TestDirectory";
         try
         {
             DirectoryInfo dinfo = new DirectoryInfo(path);
-            if (!dinfo.Exists)
+            if (dinfo.Exists)
             {
-                dinfo.Create();
-                Console.WriteLine("폴더 생성 완료");
-            }
-            else
-            {
-                Console.WriteLine("이미 폴더가 존재합니다.");
+                FileInfo[] files = dinfo.GetFiles("*.txt", SearchOption.TopDirectoryOnly);
+                for (int i = 0; i < files.Length; i++)
+                {
+                    Console.WriteLine(files[i].ToString());
+                }
             }
         }
         catch(Exception e)
@@ -31,7 +30,7 @@ class Program
     }
     static void Main()
     {
-        CreateDirectory();
+        GetFiles();
     }
     
 }
