@@ -11,11 +11,12 @@ class Program
     private static void FileCreate(string fileName)
     {
         string path = @"D:\test\" + fileName;
-        FileInfo file = new FileInfo(path);
+        FileInfo fileInfo = new FileInfo(path);
 
-        if (!file.Exists)
+        if (!fileInfo.Exists)
         {
-            var sw = file.CreateText();
+            var file = fileInfo.Open(FileMode.Create, FileAccess.ReadWrite);
+            file.Close();
         }
         else
         {
