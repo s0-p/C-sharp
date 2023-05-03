@@ -8,19 +8,27 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
 {
-    delegate int MyDelegate(int a, int b);
+    delegate void MyDelegate(int a, int b);
     static void Main()
     {
-        MyDelegate Add = delegate (int a, int b)
+        MyDelegate Compare = (a, b) =>
         {
-            return a + b;
+            if (a > b)
+            {
+                Console.WriteLine("{0} > {1}", a, b);
+            }
+            else if (a < b)
+            {
+                Console.WriteLine("{0} < {1}", a, b);
+            }
+            else
+            {
+                Console.WriteLine("{0} == {1}", a, b);
+            }
         };
-        MyDelegate Multi = delegate (int a, int b)
-        {
-            return a * b;
-        };
-        Console.WriteLine(Add(100, 200));
-        Console.WriteLine(Multi(20, 50));
+        Compare(30, 60);
+        Compare(60, 30);
+        Compare(100, 100);
     }
     
 }

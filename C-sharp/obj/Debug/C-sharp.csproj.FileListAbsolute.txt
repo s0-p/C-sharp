@@ -12,3 +12,10 @@ C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.csproj.AssemblyRefere
 C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.csproj.CoreCompileInputs.cache
 C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.exe
 C:\Users\SBSGAME\Desktop\s0-p\C#\C-sharp\obj\Debug\C-sharp.pdb
+C:\Users\SBSGAME\Desktop\C#\C-sharp\obj\Debug\C-sharp.csproj.AssemblyReference.cache
+C:\Users\SBSGAME\Desktop\C#\C-sharp\obj\Debug\C-sharp.csproj.CoreCompileInputs.cache
+C:\Users\SBSGAME\Desktop\C#\C-sharp\obj\Debug\C-sharp.exe
+C:\Users\SBSGAME\Desktop\C#\C-sharp\obj\Debug\C-sharp.pdb
+C:\Users\SBSGAME\Desktop\C#\C-sharp\bin\Debug\C-sharp.exe.config
+C:\Users\SBSGAME\Desktop\C#\C-sharp\bin\Debug\C-sharp.exe
+C:\Users\SBSGAME\Desktop\C#\C-sharp\bin\Debug\C-sharp.pdb
