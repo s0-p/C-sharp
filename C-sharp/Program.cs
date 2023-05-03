@@ -8,27 +8,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
 {
-    delegate void MyDelegate(int a, int b);
+    public static string UpperCaseString(string inputString)
+    {
+        return inputString.ToUpper();
+    }
+    public static string DrawMessage()
+    {
+        return "안녕하세요. SBS 게임 아카데미 입니다.";
+    }
     static void Main()
     {
-        MyDelegate Compare = (a, b) =>
-        {
-            if (a > b)
-            {
-                Console.WriteLine("{0} > {1}", a, b);
-            }
-            else if (a < b)
-            {
-                Console.WriteLine("{0} < {1}", a, b);
-            }
-            else
-            {
-                Console.WriteLine("{0} == {1}", a, b);
-            }
-        };
-        Compare(30, 60);
-        Compare(60, 30);
-        Compare(100, 100);
+        Func<string, string> func1 = UpperCaseString;
+        Func<string> func2 = DrawMessage;
+        string name = "Park So Yeong";
+        Console.WriteLine(func1(name));
+        Console.WriteLine(func2());
     }
     
 }
