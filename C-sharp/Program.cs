@@ -5,32 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-class Singleton
-{
-    #region Constants and Fields
-    private static Singleton _instance = null;
-    #endregion
-    
-    #region Public Properties
-    private Singleton() { }
-    public static Singleton Instance
+public class Singleton<T> where T : class, new()
+{   
+    static Singleton()
     {
-        get {
-            if (_instance == null)
-            {
-                _instance = new Singleton();
-            }
-            return _instance;
+        if (Singleton<T>.Instance == null)
+        {
+            Singleton<T>.Instance = new T();
         }
     }
-    #endregion
+    public static T Instance { get; private set; }
 
-    #region Public Methods and Operators
+    
+}
+class TestSingleton : Singleton<TestSingleton>
+{
     public void DrawMessage()
     {
         Console.WriteLine("안녕하세요. SBS 게임 아카데미 입니다.");
     }
-    #endregion
 }
 
 class Program
@@ -38,7 +31,7 @@ class Program
 
     static void Main()
     {
-        Singleton.Instance.DrawMessage();
+        TestSingleton.Instance.DrawMessage();
     }
 
 }
