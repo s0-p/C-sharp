@@ -8,21 +8,18 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 class Program
 {
-    public static string UpperCaseString(string inputString)
-    {
-        return inputString.ToUpper();
-    }
-    public static string DrawMessage()
-    {
-        return "안녕하세요. SBS 게임 아카데미 입니다.";
-    }
     static void Main()
     {
-        Func<string, string> func1 = UpperCaseString;
-        Func<string> func2 = DrawMessage;
-        string name = "Park So Yeong";
-        Console.WriteLine(func1(name));
-        Console.WriteLine(func2());
+        Func<string> Print = () => "안녕하세요. SBS 게임 아카데미입니다.";
+        Func<int, int, int> Add = (a, b) => a + b;
+        Func<int, int, int> Mul = (a, b) => a * b;
+        Func<double, double> FtoC = (F) => (F - 32) * 5 / 9;
+        Func<double, double> CtoF = (C) => C * 9 / 5 + 32;
+
+        Console.WriteLine("Func Print 값 : {0}", Print());
+        Console.WriteLine("Func Add 값 : {0}", Add(10, 20));
+        Console.WriteLine("Func FtoC 값 : {0}", FtoC(132.2d));
+        Console.WriteLine("Func CtoF 값 : {0}", CtoF(36.5d));
     }
     
 }
